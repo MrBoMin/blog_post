@@ -26,3 +26,22 @@ def get_all_posts():
         cursor.execute("SELECT * FROM posts ORDER BY created_at DESC")
         posts = cursor.fetchall() 
     return posts
+
+
+def add_post(title,content,user_id):
+    db = get_db() 
+    with db.cursor() as cursor:
+        cursor.execute("INSERT INTO posts(title,content,user_id) VALUES (%s,%s,%s)", 
+                       (title, content, user_id))
+        db.commit() 
+
+
+
+def get_user(user_id):
+    db = get_db() 
+    with db.cursor() as cursor:
+        cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+        user = cursor.fetchone() 
+        return user
+    
+

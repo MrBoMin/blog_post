@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    .post-box{
+        background-color: antiquewhite;
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+    </style>
 </head>
 <body>
+    <h2>Current User : {{ user[1] }}</h2>
+    <a href="{{ url_for('create_post') }}">Create Post</a>
     {% if posts|length == 0 %}
     <p>No Posts</p>
     {% else %}
         {% for post in posts %}
-        <p> {{post.id}} </p>
-        <p> {{post.content}} </p>
+        <div class="post-box">
+        <p> {{post[0]}} </p>
+        <p> {{post[1]}} ({{ post[3] }}) </p>
+        <p> {{post[2]}} </p>
+        </div>
         {% endfor %}
     {% endif %}
 </body>
