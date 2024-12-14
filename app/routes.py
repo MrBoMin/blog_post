@@ -60,4 +60,5 @@ def create_post():
         print(content)
         add_post(title, content, session['user_id'])
         return redirect(url_for('index'))
+        
     return render_template('create_post.html')
